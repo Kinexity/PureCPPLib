@@ -147,7 +147,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <StringPooling>true</StringPooling>
-      <FloatingPointModel>Strict</FloatingPointModel>
+      <FloatingPointModel>Fast</FloatingPointModel>
       <FloatingPointExceptions>false</FloatingPointExceptions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
@@ -163,7 +163,6 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalIncludeDirectories>C:\Users\26kuba05\source\repos\boost;</AdditionalIncludeDirectories>
       <EnableMatrixMultiplyLibraryCall>Yes</EnableMatrixMultiplyLibraryCall>
-      <DisableLanguageExtensions>true</DisableLanguageExtensions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -194,6 +193,7 @@
     </ClInclude>
     <ClInclude Include="io.h" />
     <ClInclude Include="polynomial.h" />
+    <ClInclude Include="simd_math.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="C_thread_set.h" />
     <ClInclude Include="bitset_.h" />
@@ -206,12 +206,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="C_Latch.cpp" />
-    <ClCompile Include="C_Time_Counter.cpp" />
     <ClCompile Include="C_XML.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="io.cpp" />
-    <ClCompile Include="polynomial.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

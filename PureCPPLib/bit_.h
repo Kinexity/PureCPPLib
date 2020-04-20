@@ -46,7 +46,7 @@ namespace PCL {
 		__cdecl ~reference() = default;
 		operator bool();
 		reference<bitset_size>
-			&operator=(bool new_value),
+			&operator=(bool new_value) noexcept,
 			&operator[](std::uint_fast64_t index),
 			&operator~();
 	};
@@ -61,7 +61,7 @@ namespace PCL {
 	}
 
 	template<std::uint_fast64_t bitset_size>
-	inline reference<bitset_size>& reference<bitset_size>::operator=(bool new_value) {
+	inline reference<bitset_size>& reference<bitset_size>::operator=(bool new_value) noexcept {
 		bitset_internal& mask = special_mask[new_value];
 		*bit_sector = ((*bit_sector ^ mask) | ((0x1 << bit_pos_in_sector) ^ mask)) ^ mask;
 		return *this;

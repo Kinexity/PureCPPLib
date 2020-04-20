@@ -47,6 +47,6 @@ namespace PCL {
 	}
 }
 
-PCL::C_Time_Counter& tc();
+inline PCL::C_Time_Counter tc;
 
 #endif // !C_T_C
