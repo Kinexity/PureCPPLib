@@ -29,7 +29,3 @@ namespace PCL {
 		stream = event_log_file;
 	}
 }
-
-std::string filename_string(std::string path_str) {
-	return path_str.substr(path_str.rfind("\\") + 1, path_str.size() - path_str.rfind("\\") - 1);
-}

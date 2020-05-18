@@ -14,9 +14,11 @@
 #include "C_Event_Log_Buffer.h"
 #undef max
 
-std::string filename_string(std::string path_str);
+inline std::string filename_string(std::string path_str) {
+	return path_str.substr(path_str.rfind("\\") + 1, path_str.size() - path_str.rfind("\\") - 1);
+};
 
-#define _endl_ " (" << filename_string(__FILE__) << "; " << __LINE__ << ")" << std::endl<char, std::char_traits<char>>
+#define _endl_ " (" << filename_string(__FILE__) << "; " << __LINE__ << ")" << '\n'
 #define checkpoint(event_log) event_log() << "checkpoint" << _endl_
 
 namespace PCL {

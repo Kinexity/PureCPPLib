@@ -19,7 +19,7 @@ namespace PCL {
 }
 
 inline uint_fast64_t rnd() {
-	static PCL::C_Random rnd_eng;
+	static  PCL::C_Random rnd_eng;
 	return rnd_eng();
 }
 
