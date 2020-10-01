@@ -14,7 +14,6 @@
 #include <iostream>
 #include <map>
 #include <sstream>
-#include "adv_math.h"
 #include "io.h"
 #include "C_Event_Log.h"
 #include <unordered_map>

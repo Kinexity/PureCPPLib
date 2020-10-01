@@ -18,13 +18,7 @@
     <ClInclude Include="targetver.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="C_Barrier.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="C_thread_set.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="C_Latch.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="C_Indexer.h">
@@ -48,9 +42,6 @@
     <ClInclude Include="io.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="bitset_.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="bit_.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
@@ -58,9 +49,6 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="C_Random.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="adv_math.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="polynomial.h">
@@ -72,14 +60,20 @@
     <ClInclude Include="Matrix.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="curve_fit.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="bit_vector.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="sieve.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="cubic_spline.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C_Barrier.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="C_Latch.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="C_Event_Log.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -95,8 +89,8 @@
     <ClCompile Include="C_XML.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="bit_vector.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

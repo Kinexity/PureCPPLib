@@ -5,7 +5,7 @@
 #pragma warning(disable:4996)
 
 const std::string
-line = "<---------------->";
+line = "<---------------->\n";
 constexpr uint_fast64_t
 max_strm_size = std::numeric_limits<std::streamsize>::max();
 

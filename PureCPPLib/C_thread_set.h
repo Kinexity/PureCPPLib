@@ -2,8 +2,7 @@
 #ifndef thr_set
 #define thr_set
 #include <thread>
-//#include <boost/thread/barrier.hpp>
-#include "C_Barrier.h"
+#include <boost/thread/barrier.hpp>
 #include <iostream>
 
 namespace PCL {
@@ -11,7 +10,7 @@ namespace PCL {
 	private:
 		std::mutex
 			synchronizer;
-		std::unique_ptr<C_Barrier>
+		std::unique_ptr<boost::barrier>
 			end_barrier;
 		template <typename Func_Ptr_Type, typename... Func_Args> void
 			thread_func(Func_Ptr_Type func_ptr, Func_Args... args);
@@ -35,7 +34,7 @@ namespace PCL {
 	}
 
 	template <typename Func_Ptr_Type, typename... Func_Args>
-	void C_thread_set::run(Func_Ptr_Type func_ptr, ::uint_fast64_t num_of_threads, Func_Args... args) {
+	void C_thread_set::run(Func_Ptr_Type func_ptr, uint_fast64_t num_of_threads, Func_Args... args) {
 		start_async(func_ptr, num_of_threads, args...);
 		wait_for_async();
 	}
@@ -44,19 +43,18 @@ namespace PCL {
 	inline void C_thread_set::start_async(Func_Ptr_Type func_ptr, ::uint_fast64_t num_of_threads, Func_Args... args) {
 		std::unique_lock<std::mutex> lg(synchronizer);
 		async_started = true;
-		end_barrier = std::make_unique<C_Barrier>(num_of_threads + 1);
-		for (::uint_fast64_t thr_ord = 0; thr_ord < num_of_threads; thr_ord++) {
+		end_barrier = std::make_unique<boost::barrier>(num_of_threads + 1);
+		for (uint_fast64_t thr_ord = 0; thr_ord < num_of_threads; thr_ord++) {
 			if constexpr (sizeof...(Func_Args) == 0) {
 				std::thread([&]()->void {
 					std::invoke(func_ptr);
-					end_barrier->arrive_and_wait();
+					end_barrier->wait();
 				}).detach();
 			}
 			else {
-				std::cout << std::get<0>(std::tuple<Func_Args...>(args...)) << std::endl;
 				std::thread([&]()->void {
 					std::invoke(func_ptr, args...);
-					end_barrier->arrive_and_wait();
+					end_barrier->wait();
 				}).detach();
 			}
 		}
@@ -64,7 +62,7 @@ namespace PCL {
 
 	inline void PCL::C_thread_set::wait_for_async() {
 		if (async_started) {
-			end_barrier->arrive_and_wait();
+			end_barrier->wait();
 		}
 		async_started = false;
 	}
