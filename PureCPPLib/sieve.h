@@ -3,7 +3,7 @@
 #include <cmath>
 
 namespace PCL {
-	inline std::vector<bool> sieve(size_t N) {
+	inline std::vector<bool>&& sieve(size_t N) {
 		std::vector<bool> bv(N, true);
 		bv[0] = false;
 		bv[1] = false;

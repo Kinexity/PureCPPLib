@@ -184,7 +184,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="bit_.h" />
     <ClInclude Include="cubic_spline.h" />
     <ClInclude Include="curve_fit.h" />
     <ClInclude Include="C_Event_Log.h" />
@@ -206,10 +205,8 @@
     <ClInclude Include="simd_math.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="C_thread_set.h" />
-    <ClInclude Include="bit_vector.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bit_vector.cpp" />
     <ClCompile Include="C_Event_Log.cpp" />
     <ClCompile Include="C_Event_Log_Base.cpp" />
     <ClCompile Include="C_Event_Log_Buffer.cpp">

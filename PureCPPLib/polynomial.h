@@ -37,9 +37,11 @@ public:
 		operator-(NumType divisor),
 		operator*(NumType divisor),
 		& operator+=(polynomial<NumType>& poly_),
+		& operator+=(polynomial<NumType>&& poly_),
 		& operator-=(polynomial<NumType>& poly_),
 		& operator-=(polynomial<NumType>&& poly_),
 		& operator*=(polynomial<NumType>& poly_),
+		& operator*=(polynomial<NumType>&& poly_),
 		operator-(),
 		operator+();
 	std::pair<polynomial<NumType>, polynomial<NumType>>
@@ -184,6 +186,12 @@ inline polynomial<NumType>& polynomial<NumType>::operator*=(polynomial<NumType>&
 }
 
 template<typename NumType>
+inline polynomial<NumType>& polynomial<NumType>::operator*=(polynomial<NumType>&& poly_) {
+	*this = *this * poly_;
+	return *this;
+}
+
+template<typename NumType>
 inline polynomial<NumType> polynomial<NumType>::integral() {
 	std::vector<NumType> coefficients_copy = coefficients;
 	std::for_each(std::execution::par_unseq, coefficients_copy.begin(), coefficients_copy.end(), [&](NumType& coef) {
@@ -245,6 +253,12 @@ inline polynomial<NumType>& polynomial<NumType>::operator-=(polynomial<NumType>&
 
 template<typename NumType>
 inline polynomial<NumType>& polynomial<NumType>::operator+=(polynomial<NumType>& poly_) {
+	*this = *this + poly_;
+	return *this;
+}
+
+template<typename NumType>
+inline polynomial<NumType>& polynomial<NumType>::operator+=(polynomial<NumType>&& poly_) {
 	*this = *this + poly_;
 	return *this;
 }
