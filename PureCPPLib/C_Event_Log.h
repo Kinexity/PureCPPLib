@@ -9,7 +9,6 @@
 #include <sstream>
 #include <exception>
 #include <thread>
-#include <chrono>
 #include "C_Event_Log_Base.h"
 #include "C_Event_Log_Buffer.h"
 #undef max
@@ -50,12 +49,12 @@ std::string operation_evaluation(bool result, std::string positive = "success", 
 		return std::string(" - ") + positive;
 	}
 	else {
-		std::thread([&]()->void {
-			std::this_thread::sleep_for(500ms);
-			if (is_important) {
-				throw std::runtime_error("Critical error occurred! Cannot continue without potential data damage!\nTake a look into log files for more info or send them to the developer.");
-			}
-		}).detach();
+		if (is_important) {
+			std::thread([&]()->void {
+				std::this_thread::sleep_for(500ms);
+				throw std::runtime_error("Critical error occurred! Cannot continue!\nTake a look into log files for more info or send them to the developer.");
+				}).detach();
+		}
 		return std::string(" - ") + negative;
 	}
 }

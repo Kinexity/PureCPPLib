@@ -20,11 +20,15 @@ namespace PCL {
 	}
 
 	std::string get_date_string(msg_type m_t) {
-		const time_t current_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+		auto now = std::chrono::system_clock::now();
+		auto current_time = std::chrono::system_clock::to_time_t(now);
+
 		std::tm date;
-		::localtime_s(&date, &current_time);
+		localtime_s(&date, &current_time);
+
 		char buffer[100];
 		strftime(buffer, 100, "%Y-%m-%d %H-%M-%S", &date);
-		return std::string("[") + mt_to_string(m_t) + std::string(buffer) + std::string("] ");
+
+		return std::format("[{} {}] ", mt_to_string(m_t), buffer);
 	}
 }
